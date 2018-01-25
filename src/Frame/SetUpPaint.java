@@ -14,7 +14,7 @@ public class SetUpPaint {
 	
 	private ArrayList<Entity> entities;
 	
-	private int repaintsPerMinute;
+	private int repaintsPerSecond;
 	
 	private HandleCollisions collisions;
 	
@@ -22,9 +22,9 @@ public class SetUpPaint {
 	
 	private Timer timer;
 	
-	public SetUpPaint(JFrame frame, ContactManager manager, int repaintsPerMinute){
+	public SetUpPaint(JFrame frame, ContactManager manager, int repaintsPerSecond){
 		entities = new ArrayList<>();
-		this.repaintsPerMinute = repaintsPerMinute;
+		this.repaintsPerSecond = repaintsPerSecond;
 		this.painter = new Painter(entities, frame);
 		this.collisions = new HandleCollisions(entities, manager);
 		frame.add(painter);
@@ -41,7 +41,7 @@ public class SetUpPaint {
 				painter.setEntities(entities);
 				
 			}
-		}, 0, 1000/repaintsPerMinute);
+		}, 0, 1000/repaintsPerSecond);
 	}
 	
 	public void stopUpdates(){

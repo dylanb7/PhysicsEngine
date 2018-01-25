@@ -34,7 +34,6 @@ public class Painter extends JComponent{
 	protected void paintComponent(Graphics g){
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, frame.getWidth(), frame.getHeight());
-		System.out.println("Ran");
 		for(Entity entity : entities){
 			if(entity.getColor() != null){
 				g.setColor(entity.getColor());
