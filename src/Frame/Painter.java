@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 
 import Entity.Entity;
 
@@ -14,8 +15,11 @@ public class Painter extends JComponent{
 	
 	private ArrayList<Entity> entities;
 	
-	public Painter(ArrayList<Entity> entities){
+	private JFrame frame;
+	
+	public Painter(ArrayList<Entity> entities, JFrame frame){
 		setEntities(entities);
+		this.frame = frame;
 	}
 	
 	public void setEntities(ArrayList<Entity> entities){
@@ -28,6 +32,9 @@ public class Painter extends JComponent{
 	}
 	
 	protected void paintComponent(Graphics g){
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, frame.getWidth(), frame.getHeight());
+		System.out.println("Ran");
 		for(Entity entity : entities){
 			if(entity.getColor() != null){
 				g.setColor(entity.getColor());

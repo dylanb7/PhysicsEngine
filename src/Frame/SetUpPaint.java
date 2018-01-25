@@ -23,8 +23,9 @@ public class SetUpPaint {
 	private Timer timer;
 	
 	public SetUpPaint(JFrame frame, ContactManager manager, int repaintsPerMinute){
+		entities = new ArrayList<>();
 		this.repaintsPerMinute = repaintsPerMinute;
-		this.painter = new Painter(entities);
+		this.painter = new Painter(entities, frame);
 		this.collisions = new HandleCollisions(entities, manager);
 		frame.add(painter);
 		frame.validate();

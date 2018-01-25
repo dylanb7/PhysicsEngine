@@ -16,8 +16,13 @@ public class Line {
 		this.end = end;
 		double dx = end.x - start.x;
 		double dy = end.y - start.y;
-		this.slope = dy/dx;
+		if(dx != 0)
+			this.slope = dy/dx;
+		else 
+			this.slope = 0;
 		this.yIntercept = start.y - (slope*start.x);
+		if(start.equals(end))
+			this.end = new Point(end.x+1,end.y);
 	}
 	
 	public double getSlope(){

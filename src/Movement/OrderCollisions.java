@@ -17,8 +17,8 @@ public class OrderCollisions {
 			CollisionInstance collision = collisions.get(i);
 			Entity body1 = collision.getBodyOne();
 			Entity body2 = collision.getBodyTwo();
-			
-			
+			body1.setVector(new Vector(0,0));
+			body2.setVector(new Vector(0,0));
 		}
 	}
 	
