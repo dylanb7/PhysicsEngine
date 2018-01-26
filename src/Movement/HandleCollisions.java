@@ -48,6 +48,17 @@ public class HandleCollisions {
 					continue;
 				Entity body1 = entities.get(i);
 				Entity body2 = entities.get(j);
+				if(body1.getRemoved() || body2.getRemoved()){
+					if(body1.getRemoved()){
+						entities.remove(body1);
+						body1 = null;
+					}
+					if(body2.getRemoved()){
+						entities.remove(body2);
+						body2 = null;
+					}
+					continue;
+				}
 				if(!body1.getTangible() || !body2.getTangible())
 					continue;
 

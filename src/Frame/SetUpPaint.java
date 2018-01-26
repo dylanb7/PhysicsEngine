@@ -49,4 +49,8 @@ public class SetUpPaint {
 			timer.cancel();
 	}
 	
+	public Painter getPaint(){
+		return painter;
+	}
+	
 }

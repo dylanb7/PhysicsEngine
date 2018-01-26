@@ -22,6 +22,11 @@ public class Painter extends JComponent{
 		this.frame = frame;
 	}
 	
+	public void addEntity(Entity ent){
+		entities.add(ent);
+		repaint();
+	}
+	
 	public void setEntities(ArrayList<Entity> entities){
 		this.entities = entities;
 		repaint();

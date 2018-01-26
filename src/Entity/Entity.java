@@ -11,7 +11,7 @@ import Movement.Vector;
 
 public class Entity extends Rectangle {
 
-	private boolean isTangable = false, isAffectedByGravity = false;
+	private boolean isTangable = false, isAffectedByGravity = false, toBeRemoved = false;
 	
 	private Image image;
 	
@@ -137,6 +137,14 @@ public class Entity extends Rectangle {
 	
 	public boolean isAffectedByGravity(){
 		return isAffectedByGravity;
+	}
+	
+	public void setRemoved(){
+		toBeRemoved = true;
+	}
+	
+	public boolean getRemoved(){
+		return toBeRemoved;
 	}
 	
 	public Rectangle getPostVectorBody(){
