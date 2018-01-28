@@ -19,8 +19,9 @@ public class OrderTestCollisions {
 	}
 	
 	public void order(){
-		for(int i = 0; i < testContacts.size(); i++)
+		for(int i = 0; i < testContacts.size(); i++){
 			manager.handle(testContacts.get(i));
+		}
 	}
 	
 }

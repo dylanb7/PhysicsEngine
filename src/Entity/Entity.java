@@ -11,7 +11,7 @@ import Movement.Vector;
 
 public class Entity extends Rectangle {
 
-	private boolean isTangable = false, isAffectedByGravity = false, toBeRemoved = false;
+	private boolean isTangable = true, isAffectedByGravity = false, toBeRemoved = false;
 	
 	private Image image;
 	
@@ -35,12 +35,14 @@ public class Entity extends Rectangle {
 		setBounds(0, 0, w, h);
 		collisionTest = new HashSet<>();
 		controlled = new HashSet<>();
+		currentVector = new Vector(0,0);
 	}
 	
 	public Entity(int x, int y, int w, int h){
 		setBounds(x, y, w, h);
 		collisionTest = new HashSet<>();
 		controlled = new HashSet<>();
+		currentVector = new Vector(0,0);
 	}
 	
 	public void setTestMask(String testMask){
@@ -72,7 +74,7 @@ public class Entity extends Rectangle {
 	}
 	
 	public boolean testContact(Entity contact){
-		return controlled.contains(contact);
+		return controlled.contains(contact.controlledContact);
 	}
 	
 	public void setVector(Vector vector){

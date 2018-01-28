@@ -53,12 +53,10 @@ class defaultKeys implements KeyManager{
 
 	@Override
 	public void pressed(KeyEvent pressed) {
-		System.out.println("Pressed: "+pressed.getKeyChar());
 	}
 
 	@Override
 	public void released(KeyEvent released) {
-		System.out.println("Released: "+released.getKeyChar());
 	}
 	
 }

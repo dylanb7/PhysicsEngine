@@ -42,7 +42,7 @@ public class Painter extends JComponent{
 		for(Entity entity : entities){
 			if(entity.getColor() != null){
 				g.setColor(entity.getColor());
-				g.drawRect(entity.x, entity.y, entity.width, entity.height);
+				g.fillRect(entity.x, entity.y, entity.width, entity.height);
 			}else if(entity.getImage() != null){
 				g.drawImage(entity.getImage(), entity.x, entity.y, entity.width, entity.height, this);
 			}
