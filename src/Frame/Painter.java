@@ -43,7 +43,8 @@ public class Painter extends JComponent{
 			if(entity.getColor() != null){
 				g.setColor(entity.getColor());
 				g.fillRect(entity.x, entity.y, entity.width, entity.height);
-			}else if(entity.getImage() != null){
+			}
+			  if(entity.getImage() != null){
 				g.drawImage(entity.getImage(), entity.x, entity.y, entity.width, entity.height, this);
 			}
 			if(showOutline){

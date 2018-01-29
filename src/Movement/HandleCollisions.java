@@ -20,26 +20,33 @@ public class HandleCollisions {
 	
 	private ContactManager manager;
 	
+	private OrderTestCollisions testOrder;
+	
+	private OrderCollisions collisionOrder;
+	
 	public HandleCollisions(ArrayList<Entity> entities, ContactManager manager){
 		currentOverlap = new ArrayList<>();
 		customOverlap = new ArrayList<>();
 		this.gravityVector = new Vector(0, 1);
 		this.entities = entities;
 		this.manager = manager;
+		this.testOrder = new OrderTestCollisions(manager);
+		this.collisionOrder = new OrderCollisions();
 	}
 	
 	public void orderEntities(){
 		evaluateEntitys();
-		OrderTestCollisions test = new OrderTestCollisions(customOverlap, manager);
-		test.order();
-		OrderCollisions collisions = new OrderCollisions(currentOverlap);
-		collisions.order();
+		testOrder.setTestContacts(customOverlap);
+		testOrder.order();
+		collisionOrder.setCollisions(currentOverlap);
+		collisionOrder.order();
 		for(int i = 0; i < entities.size(); i++)
 			entities.get(i).moveByVector();
 	}
 	
 	private void evaluateEntitys(){
 		currentOverlap.clear();
+		customOverlap.clear();
 		applyGravity();
 		for(int i = 0; i < entities.size(); i++){
 			loop:
@@ -55,9 +62,9 @@ public class HandleCollisions {
 					if(k.hasBeenMatched(body1, body2))
 						continue loop;
 				if(body1.getPostVectorBody().intersects(body2.getPostVectorBody()) || pathsCross(body1, body2)){
-					if(body1.realContact(body2) && body2.realContact(body1))
+					if(body1.realContact(body2) || body2.realContact(body1))
 						currentOverlap.add(new CollisionInstance(body1, body2));
-					if(body1.testContact(body2) && body2.testContact(body1))
+					if(body1.testContact(body2) || body2.testContact(body1))
 						customOverlap.add(new CollisionInstance(body1, body2));
 					continue loop;
 				}

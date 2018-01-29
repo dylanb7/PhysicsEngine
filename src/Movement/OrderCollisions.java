@@ -8,7 +8,7 @@ public class OrderCollisions {
 
 	private ArrayList<CollisionInstance> collisions;
 	
-	public OrderCollisions(ArrayList<CollisionInstance> collisions){
+	public void setCollisions(ArrayList<CollisionInstance> collisions){
 		this.collisions = collisions;
 	}
 	

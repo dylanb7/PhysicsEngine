@@ -10,12 +10,15 @@ public class OrderTestCollisions {
 	
 	private ContactManager manager;
 	
-	public OrderTestCollisions(ArrayList<CollisionInstance> testContacts, ContactManager manager){
-		this.testContacts = testContacts;
+	public OrderTestCollisions(ContactManager manager){
 		if(manager == null){
 			manager = new defaultManager();
 		}
 		this.manager = manager;
+	}
+	
+	public void setTestContacts(ArrayList<CollisionInstance> testContacts){
+		this.testContacts = testContacts;
 	}
 	
 	public void order(){
