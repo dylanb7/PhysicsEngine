@@ -11,22 +11,46 @@ import Movement.Vector;
 public class Main {
 	
 	public static void main(String[] args) {
-		contact c = new contact();
-		Entity grass = new Entity(0,400,1000,100);
-		grass.setColor(Color.GREEN);
-		grass.setTestMask("Grass");
-		Entity ball = new Entity(10,10,20,20);
-		ball.setColor(Color.RED);
-		ball.setAffectedByGravity(true);
-		ball.setTestMask("Ball");
-		ball.addTestMask(grass);
-		ball.setVector(new Vector(2,0));
-		Frame frame = new Frame(1000,500,c,null,35);
-		frame.addEntity(grass);
-		frame.addEntity(ball);
+		keys k = new keys();
+		Frame frame = new Frame(1000,500,null,k,35);
+		k.setFrame(frame);
 		frame.startPaint();
 	}
     
+}
+
+class keys implements KeyManager {
+
+	private Frame frame;
+	
+	public void setFrame(Frame frame){
+		this.frame = frame;
+	}
+	
+	private void add(){
+		Color[] colors = {Color.CYAN, Color.MAGENTA, Color.RED, Color.ORANGE, Color.YELLOW, Color.BLUE, Color.GREEN};
+		for(int i = 0; i < 10; i++){
+			Entity ent = new Entity(487,100,26,26);
+			ent.setAffectedByGravity(true);
+			ent.setVector(new Vector((int)(Math.random()*21)-10,-(int)(Math.random()*14)));
+			ent.setColor(colors[(int)(Math.random()*colors.length)]);
+			frame.addEntity(ent);
+		}
+	}
+	
+	@Override
+	public void pressed(KeyEvent pressed) {
+		// TODO Auto-generated method stub
+		add();
+	}
+
+	@Override
+	public void released(KeyEvent released) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 }
 
 class contact  implements ContactManager {
