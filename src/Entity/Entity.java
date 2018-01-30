@@ -33,8 +33,8 @@ public class Entity extends Rectangle {
 	
 	public Entity(int w, int h){
 		setBounds(0, 0, w, h);
-		collisionTest = new HashSet<>();
-		controlled = new HashSet<>();
+		collisionTest = new HashSet<String>();
+		controlled = new HashSet<String>();
 		currentVector = new Vector(0,0);
 	}
 	
